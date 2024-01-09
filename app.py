@@ -52,7 +52,25 @@ def edit():
 @app.route("/expenses")
 def expenses():
     expenses = Expense.query.all()
-    return render_template("expenses.html", expenses=expenses)
+    total = 0
+    t_business = 0
+    t_other = 0
+    t_food = 0
+    t_entertainment = 0 
+    for expense in expenses:
+        total += expense.amount
+        if expense.category == "business":
+           t_business += expense.amount
+        elif expense.category == "other":
+           t_other += expense.amount
+        elif expense.category == "food":
+           t_food += expense.amount
+        elif expense.category == "entertainment":
+           t_entertainment += expense.amount
+           
+    return render_template("expenses.html", expenses=expenses,
+                           total=total, t_business= t_business, t_entertainment= t_entertainment,
+                           t_other= t_other, t_food= t_food)
 
 @app.route("/addexpense", methods=["POST"])
 def addexpense():
