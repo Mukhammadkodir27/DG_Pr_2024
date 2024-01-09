@@ -16,6 +16,34 @@ class Expense(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String(50), nullable=False)
 
+
+@app.route("/home", methods=["GET", "POST"])
+def home():
+    try:
+       expenses = Expense.query.all()
+       total = 0
+       t_business = 0
+       t_other = 0
+       t_food = 0
+       t_entertainment = 0 
+       for expense in expenses:
+           total += expense.amount
+           if expense.category == "business":
+              t_business += expense.amount
+           elif expense.category == "other":
+              t_other += expense.amount
+           elif expense.category == "food":
+              t_food += expense.amount
+           elif expense.category == "entertainment":
+              t_entertainment += expense.amount
+    except TypeError as e:
+       # Handle the TypeError by printing a message or any other action
+       print(f"Error: {e}. Skipping the operation.")
+    return render_template("home.html", expenses=expenses,
+                           total=total, t_business= t_business, t_entertainment= t_entertainment,
+                           t_other= t_other, t_food= t_food)   
+    
+
 @app.route("/")
 def add():
     return render_template("add.html")
@@ -70,9 +98,7 @@ def expenses():
               t_entertainment += expense.amount
     except TypeError as e:
        # Handle the TypeError by printing a message or any other action
-       print(f"Error: {e}. Skipping the operation.")
-       
-           
+       print(f"Error: {e}. Skipping the operation.")       
     return render_template("expenses.html", expenses=expenses,
                            total=total, t_business= t_business, t_entertainment= t_entertainment,
                            t_other= t_other, t_food= t_food)
