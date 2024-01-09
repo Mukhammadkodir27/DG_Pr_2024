@@ -14,10 +14,16 @@
               <span class="badge badge-primary">{{ expense.category }}</span>
             </div>
             <div class="col-md-2">
-              <a href="updateexpense/{{expense.id}}" class="btn btn-sm btn-success">Edit</a>
+              <a
+                href="updateexpense/{{expense.id}}"
+                class="btn btn-sm btn-success"
+                >Edit</a
+              >
             </div>
             <div class="col-md-2">
-              <a href="delete/{{expense.id}}" class="btn btn-sm btn-danger">Delete</a>
+              <a href="delete/{{expense.id}}" class="btn btn-sm btn-danger"
+                >Delete</a
+              >
             </div>
           </div>
         </div>
@@ -25,5 +31,56 @@
     </div>
   </div>
   {% endfor %}
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="mt-5">Expense breakdown</h3>
+
+      <div class="card shadow bb-2 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">Food</div>
+            <div class="col-md-6">{{t_food}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow bb-2 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">Entertainment</div>
+            <div class="col-md-6">{{t_entertainment}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow bb-2 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">Business</div>
+            <div class="col-md-6">{{t_business}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow bb-2 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">Other</div>
+            <div class="col-md-6">{{t_other}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow bb-2 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">Total</div>
+            <div class="col-md-6">{{total}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}
