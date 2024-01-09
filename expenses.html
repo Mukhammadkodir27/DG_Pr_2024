@@ -35,43 +35,38 @@
   <div class="row">
     <div class="col-md-6">
       <h3 class="mt-5">Expense breakdown</h3>
-
       <div class="card shadow bb-2 bg-white rounded">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">Food</div>
-            <div class="col-md-6">{{t_food}}</div>
+            <div id="tfood" class="col-md-6">{{t_food}}</div>
           </div>
         </div>
       </div>
-
       <div class="card shadow bb-2 bg-white rounded">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">Entertainment</div>
-            <div class="col-md-6">{{t_entertainment}}</div>
+            <div id="tentertainment" class="col-md-6">{{t_entertainment}}</div>
           </div>
         </div>
       </div>
-
       <div class="card shadow bb-2 bg-white rounded">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">Business</div>
-            <div class="col-md-6">{{t_business}}</div>
+            <div id="tbusiness" class="col-md-6">{{t_business}}</div>
           </div>
         </div>
       </div>
-
       <div class="card shadow bb-2 bg-white rounded">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">Other</div>
-            <div class="col-md-6">{{t_other}}</div>
+            <div id="tother" class="col-md-6">{{t_other}}</div>
           </div>
         </div>
       </div>
-
       <div class="card shadow bb-2 bg-white rounded">
         <div class="card-body">
           <div class="row">
@@ -81,6 +76,49 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-6">
+      <h3 class="mt-5">Expense Breakdown</h3>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        let food = document.getElementById("tfood").innerHTML;
+        let entertainment = document.getElementById("tentertainment").innerHTML;
+        let business = document.getElementById("tbusiness").innerHTML;
+        let other = document.getElementById("tother").innerHTML;
+        const ctx = document.getElementById("myChart");
+        new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: ["Food", "Entertainment", "Business", "Other"],
+            datasets: [
+              {
+                label: "# of Votes",
+                data: [food, entertainment, business, other],
+                backgroundColor: [
+                  "rgba(0,0,255)",
+                  "rgba(0,255,0)",
+                  "rgba(255,255,0)",
+                  "rgba(255,0,0)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
+    </div>
   </div>
-  {% endblock %}
 </div>
+{% endblock %}
