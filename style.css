@@ -1,0 +1,10 @@
+.bg-nav{
+    background: #FFF084;
+    background: -webkit-linear-gradient(to right, #33001b, #ff0084);
+    background: linear-gradient(to right, #33001b, #ff0084);
+}
+
+
+.mt-100{
+    margin-top:100px;
+}
