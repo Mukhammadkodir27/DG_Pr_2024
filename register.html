@@ -31,16 +31,16 @@
             <div class="col-md-4">
                 <div class="card mt-100">
                     <div class="card-body">
-                        <form class="form">
+                        <form class="form" method="post" action="/add_user">
                             <label>Name</label><br>
-                            <input type="text" class="form-control"><br>
+                            <input type="text" class="form-control" name="uname"><br>
                             <label>Email</label><br>
-                            <input type="email" class="form-control"><br>
+                            <input type="email" class="form-control" name="uemail"><br>
                             <label>Password</label><br>
-                            <input type="password" class="form-control"><br><br>
+                            <input type="password" class="form-control" name="upassword"><br><br>
                             <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
                         </form>    
-                        <p class="mt-2">Already a member? <a href="#">Login Here</a></p>
+                        <p class="mt-2">Already a member? <a href="/">Login Here</a></p>
                     </div>
                 </div>   
             </div>
